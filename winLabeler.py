@@ -16,11 +16,19 @@ if file_ext not in [".png", ".jpg", ".jpeg", ".ico"]:
     print("    [!] File is not a png, jpg, jpeg or ico file!")
     exit(1)
 
-if file_ext in [".png", ".jpg", ".jpeg"]:
-    print("    File is an image.\n")
-    prepareImage(file_path)
-elif file_ext == ".ico":
-    print("    File is an icon.\n")
-    prepareIcon(file_path)
+prepareLabel(file_path)
 
-generateIcon("icon", True)
+compositeLabel()
+
+small_folder = input("> Use small folder? (y/n): ")
+
+if small_folder.lower() in ["y", "yes"]:
+    s = True
+else:
+    s = False
+
+generateIcon(small_folder=s)
+
+cleanUp()
+
+print("\nDone! File 'out.ico' created in the root folder.")

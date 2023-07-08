@@ -40,3 +40,13 @@ def clearTempFolder():
     """
     for file in os.listdir(TEMP_PATH):
         os.remove(os.path.join(TEMP_PATH, file))
+
+
+
+
+def cleanUp():
+    """Move the output file to the root folder and delete the temp folder.
+    """
+    os.rename(os.path.join(TEMP_PATH, "out.ico"), os.path.join(ROOT_PATH, "out.ico"))
+    clearTempFolder()
+    os.rmdir(TEMP_PATH)
