@@ -22,3 +22,5 @@ if file_ext in [".png", ".jpg", ".jpeg"]:
 elif file_ext == ".ico":
     print("    File is an icon.\n")
     prepareIcon(file_path)
+
+generateIcon("icon", True)
