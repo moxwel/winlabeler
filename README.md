@@ -19,12 +19,12 @@ pip install Wand
 Then, run the script:
 
 ```bash
-python winLabeler.py
+python winLabeler.py --path "C:\Users\User\example.png" small
 ```
 
-First, enter the path of the image you want to use as the label icon.
-
-Then, select if you want to use a folder for the small icon.
+```bash
+python winLabeler.py --path "C:\Users\User\summer_photos\example.png" large
+```
 
 Finally, the icon should be in the root folder of the project with the name `out.ico`.
 
