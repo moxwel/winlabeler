@@ -2,12 +2,12 @@ from src.texts import *
 from src.image import *
 from src.tools import *
 
-import argparse 
+import argparse
 parser = argparse.ArgumentParser() # Create the parser
 
 parser.add_argument('path', type=str, help="Path of the image you want to use as the label icon") # example: python winLabeler.py "C:\Users\User\example.png"
 parser.add_argument('-ns','--no-small-folder', action="store_true") #args.ns will be False if you not use -ns flag
-parser.add_argument('-o','--output', type=str, help="Output file name. Default is out.ico",default="out.ico") 
+parser.add_argument('-o','--output', type=str, help="Output file name. Default is out.ico",default="out.ico")
 
 args = parser.parse_args() # Parse the argument. you can access to -path by args.path
 
@@ -33,6 +33,8 @@ compositeLabel()
 
 generateIcon(no_small_folder, output)
 
+moveOutputFile(output)
+
 cleanUp()
 
-print("\nDone! File 'out.ico' created in the root folder.")
+print("Done! File '" + output + "' created in the output folder.")

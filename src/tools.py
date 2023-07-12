@@ -5,9 +5,11 @@ import os
 
 
 TEMP_FOLD_NAME = 'temp'
+OUT_FOLD_NAME = 'out'
 
 ROOT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 TEMP_PATH = os.path.join(ROOT_PATH, TEMP_FOLD_NAME)
+OUT_PATH = os.path.join(ROOT_PATH, OUT_FOLD_NAME)
 
 
 
@@ -47,6 +49,19 @@ def clearTempFolder():
 def cleanUp():
     """Move the output file to the root folder and delete the temp folder.
     """
-    os.rename(os.path.join(TEMP_PATH, "out.ico"), os.path.join(ROOT_PATH, "out.ico"))
     clearTempFolder()
     os.rmdir(TEMP_PATH)
+
+
+
+
+def moveOutputFile(output_file_name):
+    """Move the output file to the output folder.
+    """
+    # Only move the file if it exists
+    if os.path.exists(os.path.join(TEMP_PATH, output_file_name)):
+        # Check if the output folder exists
+        if not os.path.exists(OUT_PATH):
+            os.mkdir(OUT_PATH)
+
+        os.rename(os.path.join(TEMP_PATH, output_file_name), os.path.join(OUT_PATH, output_file_name))
