@@ -11,7 +11,7 @@ FOLDR_IMG_SML = os.path.join(ROOT_PATH, "resources", "small.png")
 
 
 
-def generateIcon(small_folder=True):
+def generateIcon(small_folder,output_file_name):
     """Generate an .ico file with multiple resolutions.
 
     Args:
@@ -39,7 +39,7 @@ def generateIcon(small_folder=True):
 
     # Save ico file
     checkTempFolder()
-    fld_img_256.save(filename=os.path.join(TEMP_PATH, "out.ico"))
+    fld_img_256.save(filename=os.path.join(TEMP_PATH, output_file_name))
 
     # Close images
     fld_img_256.close()
