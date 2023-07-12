@@ -1,0 +1,16 @@
+{
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.trimAutoWhitespace": true,
+    "workbench.editorAssociations": {
+        "*.png": "luna.editor",
+        "*.ico": "luna.editor"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python",
+        "editor.rulers": [80, 100],
+    }
+}
