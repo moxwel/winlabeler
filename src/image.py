@@ -11,11 +11,12 @@ FOLDR_IMG_SML = os.path.join(ROOT_PATH, "resources", "small.png")
 
 
 
-def generateIcon(small_folder,output_file_name):
+def generateIcon(no_small_folder, output_file_name):
     """Generate an .ico file with multiple resolutions.
 
     Args:
-        small_folder (bool, optional): Indicates if the smallest icon shoud be a folder. Defaults to True.
+        no_small_folder (bool): Indicates if the small icon shoud not be a folder.
+        output_file_name (string): The name of the output file.
     """
     # Load folder images
     fld_img_256 = Image(filename=os.path.join(TEMP_PATH, "folder_256.png"))
@@ -25,11 +26,14 @@ def generateIcon(small_folder,output_file_name):
     fld_img_32 = Image(filename=os.path.join(TEMP_PATH, "folder_32.png"))
     fld_img_32.type = 'truecoloralpha'
 
-    # Should the smallest icon be a folder?
-    if small_folder:
-        fld_img_16 = Image(filename=os.path.join(TEMP_PATH, "folder_16.png"))
-    else:
+    # How the small icon should be?
+    if no_small_folder:
+        # Use the icon as-is (no folder)
         fld_img_16 = Image(filename=os.path.join(TEMP_PATH, "label_16.png"))
+    else:
+        # Use a folder with a small icon inside
+        fld_img_16 = Image(filename=os.path.join(TEMP_PATH, "folder_16.png"))
+
     fld_img_16.type = 'truecoloralpha'
 
     # Combine images into a single ico file

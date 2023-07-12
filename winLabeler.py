@@ -31,13 +31,7 @@ prepareLabel(file_path)
 
 compositeLabel()
 
-
-if no_small_folder == True:
-    s = False
-else:
-    s = True
-
-generateIcon(small_folder=s,output_file_name=output)
+generateIcon(no_small_folder, output)
 
 cleanUp()
 
