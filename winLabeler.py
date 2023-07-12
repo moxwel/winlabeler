@@ -4,16 +4,18 @@ from src.tools import *
 
 import argparse 
 parser = argparse.ArgumentParser() # Create the parser
-parser.add_argument('--path', type=str, help="Path of the image you want to use as the label icon", required=True) # Add an argument
-parser.add_argument('size', type=str, help="Image Size. small or large")
+
+parser.add_argument('path', type=str, help="Path of the image you want to use as the label icon") # example --path "C:\Users\User\example.png"
+parser.add_argument('-ns','--no-small-folder', action="store_true") #args.ns will be False if you not use -ns flag
+parser.add_argument('-o','--output', type=str, help="Output file name. Default is out.ico",default="out.ico") 
+
 args = parser.parse_args() # Parse the argument. you can access to -path by args.path
 
-if args.size.lower() not in ["small","large"]: #check for size argument. must be "large" or "small"
-    parser.error('Size has to be "large" or "small"')
+file_path = args.path
+no_small_folder = args.no_small_folder #argparse automatically converts -'s to _'s in arguments
+output = args.output
 
 welcomeString()
-
-file_path = args.path
 
 if not os.path.exists(file_path):
     print("    [!] File does not exist!")
@@ -29,14 +31,13 @@ prepareLabel(file_path)
 
 compositeLabel()
 
-small_folder = args.size.lower()
 
-if small_folder.lower() == "small":
-    s = True
-else:
+if no_small_folder == True:
     s = False
+else:
+    s = True
 
-generateIcon(small_folder=s)
+generateIcon(small_folder=s,output_file_name=output)
 
 cleanUp()
 
