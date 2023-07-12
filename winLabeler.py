@@ -5,7 +5,7 @@ from src.tools import *
 import argparse 
 parser = argparse.ArgumentParser() # Create the parser
 
-parser.add_argument('path', type=str, help="Path of the image you want to use as the label icon") # example --path "C:\Users\User\example.png"
+parser.add_argument('path', type=str, help="Path of the image you want to use as the label icon") # example: python winLabeler.py "C:\Users\User\example.png"
 parser.add_argument('-ns','--no-small-folder', action="store_true") #args.ns will be False if you not use -ns flag
 parser.add_argument('-o','--output', type=str, help="Output file name. Default is out.ico",default="out.ico") 
 
