@@ -2,9 +2,20 @@ from src.texts import *
 from src.image import *
 from src.tools import *
 
-welcomeString()
+import argparse 
+parser = argparse.ArgumentParser() # Create the parser
 
-file_path = input("> Enter the path of the icon label: ")
+parser.add_argument('path', type=str, help="Path of the image you want to use as the label icon") # example: python winLabeler.py "C:\Users\User\example.png"
+parser.add_argument('-ns','--no-small-folder', action="store_true") #args.ns will be False if you not use -ns flag
+parser.add_argument('-o','--output', type=str, help="Output file name. Default is out.ico",default="out.ico") 
+
+args = parser.parse_args() # Parse the argument. you can access to -path by args.path
+
+file_path = args.path
+no_small_folder = args.no_small_folder #argparse automatically converts -'s to _'s in arguments
+output = args.output
+
+welcomeString()
 
 if not os.path.exists(file_path):
     print("    [!] File does not exist!")
@@ -20,14 +31,13 @@ prepareLabel(file_path)
 
 compositeLabel()
 
-small_folder = input("> Use small folder? (y/n): ")
 
-if small_folder.lower() in ["y", "yes"]:
-    s = True
-else:
+if no_small_folder == True:
     s = False
+else:
+    s = True
 
-generateIcon(small_folder=s)
+generateIcon(small_folder=s,output_file_name=output)
 
 cleanUp()
 
