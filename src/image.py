@@ -20,11 +20,11 @@ def generateIcon(no_small_folder, output_file_name):
     """
     # Load folder images
     fld_img_256 = Image(filename=os.path.join(TEMP_PATH, "folder_256.png"))
-    fld_img_256.type = 'truecolormatte'
+    fld_img_256.type = 'truecoloralpha'
     fld_img_48 = Image(filename=os.path.join(TEMP_PATH, "folder_48.png"))
-    fld_img_48.type = 'truecolormatte'
+    fld_img_48.type = 'truecoloralpha'
     fld_img_32 = Image(filename=os.path.join(TEMP_PATH, "folder_32.png"))
-    fld_img_32.type = 'truecolormatte'
+    fld_img_32.type = 'truecoloralpha'
 
     # How the small icon should be?
     if no_small_folder:
@@ -34,7 +34,7 @@ def generateIcon(no_small_folder, output_file_name):
         # Use a folder with a small icon inside
         fld_img_16 = Image(filename=os.path.join(TEMP_PATH, "folder_16.png"))
 
-    fld_img_16.type = 'truecolormatte'
+    fld_img_16.type = 'truecoloralpha'
 
     # Combine images into a single ico file
     fld_img_256.sequence.append(fld_img_48)
@@ -63,7 +63,7 @@ def prepareLabel(file_path):
     """
     # Load folder images
     ico_img = Image(filename=os.path.abspath(file_path))
-    ico_img.type = 'truecolormatte'
+    ico_img.type = 'truecoloralpha'
 
     # The .ico file format has multiple resolutions inside, we need to extract them
     file_ext = os.path.splitext(file_path)[1]
@@ -134,15 +134,15 @@ def compositeLabel():
     """
     # Load images
     big_img = Image(filename=os.path.join(TEMP_PATH, "label_135.png"))
-    big_img.type = 'truecolormatte'
+    big_img.type = 'truecoloralpha'
     min_img = Image(filename=os.path.join(TEMP_PATH, "label_10.png"))
-    min_img.type = 'truecolormatte'
+    min_img.type = 'truecoloralpha'
     fld_img_big = Image(filename=FOLDR_IMG_BIG)
-    fld_img_big.type = 'truecolormatte'
+    fld_img_big.type = 'truecoloralpha'
     fld_img_sml = Image(filename=FOLDR_IMG_SML)
-    fld_img_sml.type = 'truecolormatte'
+    fld_img_sml.type = 'truecoloralpha'
 
-    fld_img_big.composite(big_img, left=94, top=91)
+    fld_img_big.composite(big_img, gravity='south_east')
     fld_img_sml.composite(min_img, gravity='south_east')
 
     # Save images
