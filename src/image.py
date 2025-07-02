@@ -71,25 +71,25 @@ def prepareLabel(file_path):
         for i in ico_img.sequence:
             if i.size[0] == 256:
                 ico_img_big = Image(image=i)
-                ico_img_big.resize(135,135)
+                ico_img_big.transform(resize='135x135')
                 ico_img_big_sh = addShadow(ico_img_big)
 
             elif i.size[0] == 16:
                 ico_img_sml = Image(image=i)
 
         ico_img_min = ico_img_sml.clone()
-        ico_img_min.resize(10,10)
+        ico_img_min.transform(resize='10x10')
 
     elif file_ext in [".png", ".jpg", ".jpeg"]:
         ico_img_big = ico_img.clone()
-        ico_img_big.resize(135,135)
+        ico_img_big.transform(resize='135x135')
         ico_img_big_sh = addShadow(ico_img_big)
 
         ico_img_sml = ico_img.clone()
-        ico_img_sml.resize(16,16)
+        ico_img_sml.transform(resize='16x16')
 
         ico_img_min = ico_img.clone()
-        ico_img_min.resize(10,10)
+        ico_img_min.transform(resize='10x10')
 
     # Save images
     checkTempFolder()
